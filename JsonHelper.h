@@ -21,7 +21,7 @@ class JsonInterface{
   protected:  
     String propertyToJson(String name, String value, bool comillas, bool ultimo);
     //virtual String jsonProperties();
-	virtual void jsonProperties(String &value);
+	  virtual void jsonProperties(String &value);
 
     String parseProperty(String* json, String property, uint8_t maxLength= 3);
   
