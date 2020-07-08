@@ -14,8 +14,8 @@ bool isNotNull(String value){
 void EEPROMWInt(int address, int value){
   //Decomposition from a int to 2 bytes by using bitshift.
   //One = Most significant -> Two = Least significant byte
-  byte two= (value & 0xFF);
-  byte one= ((value >> 8) & 0xFF);
+  byte two = (value & 0xFF);
+  byte one = ((value >> 8) & 0xFF);
   //Write the 2 bytes into the eeprom memory.
   EEPROM.write(address, two);
   EEPROM.write(address + 1, one);
@@ -25,8 +25,8 @@ void EEPROMWInt(int address, int value){
 //at the specified address to address + 2.
 int EEPROMRInt(int address){
   //Read the 4 bytes from the eeprom memory.
-  int two= EEPROM.read(address);
-  int one= EEPROM.read(address + 1);
+  int two = EEPROM.read(address);
+  int one = EEPROM.read(address + 1);
   //Return the recomposed int by using bitshift.
   return ((two << 0) & 0xFF) + ((one << 8) & 0xFFFF);
 }

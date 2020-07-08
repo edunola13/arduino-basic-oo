@@ -20,11 +20,11 @@ long EEPROMRLong(long address);
 //template <class T> int EEPROM_writeAnything(int ee, const T& value);
 //template <class T> int EEPROM_readAnything(int ee, T& value);
 
-class BaseElement: public JsonInterface {
+class BaseElement {
   protected:
-	   bool started= false;
+	   bool started = false;
   public:
-  	virtual uint8_t getCode();
+  	virtual uint8_t getCode();  // for internal use
 
   	bool getStarted(){
   	  return this->started;
