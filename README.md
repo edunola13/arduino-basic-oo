@@ -2,7 +2,7 @@
 En este proyecto se encuentran clases y metodos que seran utilizadas de forma generica por demas librerias o proyectos.
 
 Por un lado tenemos el modulo ComponentAbstract donde se definen clases de las que pueden extender todas las clases que implementen funcionalidad
-de sensores, actuadores, controladores etc. Con esta clase todas las que la hereden sabran guardarse en la EEPROM y van a respetar cierta interface
+de sensores, actuadores, controladores, etc. Con esta clase todas las que la hereden sabran guardarse en la EEPROM y van a respetar cierta interface
 segun el tipo.
 Tambien estan los metodos directos para que no haya necesidad de heredar en caso de querer usarlos de forma directa.
 
