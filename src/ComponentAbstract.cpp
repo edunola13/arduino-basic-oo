@@ -70,3 +70,47 @@ template <class T> int EEPROM_readAnything(int ee, T& value){
           *p++ = EEPROM.read(ee++);
     return i;
 }*/
+
+//
+//BaseElement
+void BaseElement::readFromEeprom(int pos){
+	uint8_t val = EEPROM.read(pos++);
+	if(val == 1){
+		this->readSpecificFromEeprom(pos);
+	}
+}
+
+void BaseElement::saveInEeprom(int pos){
+  #if defined(ESP8266) || defined(ESP32)
+    EEPROM.put(pos++, this->started);
+  #else
+	  EEPROM.update(pos++, this->started);
+  #endif
+	if(this->started){
+    #if defined(ESP8266) || defined(ESP32)
+      this->saveSpecificPartialInEeprom(pos);
+    #else
+      this->saveSpecificPartialInEeprom(pos);
+    #endif
+	}
+}
+
+//
+//ActuatorAbstract
+uint8_t ActuatorAbstract::getKeepValue(){
+  return this->keepValue;
+}
+void ActuatorAbstract::setKeepValue(uint8_t keepValue){
+  this->keepValue = keepValue;
+}
+
+void ActuatorAbstract::readSpecificFromEeprom(int &pos){
+  this->keepValue = EEPROM.read(pos++);
+}
+void ActuatorAbstract::saveSpecificPartialInEeprom(int &pos){
+  #if defined(ESP8266) || defined(ESP32)
+    EEPROM.put(pos++, this->keepValue);
+  #else
+	  EEPROM.update(pos++, this->keepValue);
+  #endif
+}

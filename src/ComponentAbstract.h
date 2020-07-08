@@ -1,5 +1,5 @@
-#ifndef ElementAbstract_h
-#define ElementAbstract_h
+#ifndef ComponentAbstract_h
+#define ComponentAbstract_h
 //#include "WConstants.h"
 #include <Arduino.h>
 #include <JsonHelper.h>
@@ -31,9 +31,11 @@ class BaseElement {
   	}
 
   	//EEPROM
-  	virtual uint8_t positions();
-  	virtual void readFromEeprom(int pos);
-  	virtual void saveInEeprom(int pos);
+    void readFromEeprom(int pos);
+    void saveInEeprom(int pos);
+    virtual uint8_t positions();
+    virtual void readSpecificFromEeprom(int &pos);
+    virtual void saveSpecificPartialInEeprom(int &pos);
 };
 
 // @Deprecated
@@ -43,6 +45,17 @@ class SensorInterface: public BaseElement {
   public:
 	  virtual void updateSensor();
 	  virtual int getLevel(uint8_t type=0);
+};
+
+class ActuatorAbstract: public BaseElement {
+  protected:
+    uint8_t keepValue = 0;
+  public:
+    uint8_t getKeepValue();
+    void setKeepValue(uint8_t keepValue);
+
+    void readSpecificFromEeprom(int &pos);
+    void saveSpecificPartialInEeprom(int &pos);
 };
 
 #endif

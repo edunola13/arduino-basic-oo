@@ -6,6 +6,8 @@ de sensores, actuadores, controladores, etc. Con esta clase todas las que la her
 segun el tipo.
 Tambien estan los metodos directos para que no haya necesidad de heredar en caso de querer usarlos de forma directa.
 
+Despues tenemos modulos separados para actuadores, sensores y controladores donde heredan lo que corresponde y se hacen clases especificas.
+
 ## Deprecated
 Usar lib ArduinoJson.
 
