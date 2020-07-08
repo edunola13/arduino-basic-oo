@@ -2,9 +2,7 @@
 #define ElementAbstract_h
 //#include "WConstants.h"
 #include <Arduino.h>
-#include <EEPROM.h>
-//#include <JsonHelper.h>
-#include "JsonHelper.h"
+#include <JsonHelper.h>
 
 //UTIL
 bool isNotNull(String value);
@@ -24,40 +22,27 @@ long EEPROMRLong(long address);
 
 class BaseElement: public JsonInterface {
   protected:
-	bool started= false;
+	   bool started= false;
   public:
-	virtual uint8_t getCode();
-	bool getStarted(){
-	  return this->started;
-	}
-	
-	bool isNotNull(String value){
-	  return value != "null" && value != "NULL";
-	}
-	
-	//EEPROM
-	void EEPROMWriteInt(int address, int value){
-	  EEPROMWInt(address, value);
-	}
-	int EEPROMReadInt(int address){
-      return EEPROMRInt(address);
-    }
-	void EEPROMWriteLong(int address, long value){
-	  EEPROMWLong(address, value);
-	}
-	long EEPROMReadLong(long address){
-	  return EEPROMRLong(address);
-	}
-	//EEPROM
-	virtual uint8_t positions();
-	virtual void readFromEeprom(int pos);
-	virtual void saveInEeprom(int pos);
+  	virtual uint8_t getCode();
+
+  	bool getStarted(){
+  	  return this->started;
+  	}
+
+  	//EEPROM
+  	virtual uint8_t positions();
+  	virtual void readFromEeprom(int pos);
+  	virtual void saveInEeprom(int pos);
 };
 
+// @Deprecated
+class BaseElementJson: public BaseElement {};
+
 class SensorInterface: public BaseElement {
-  public: 
-	virtual void updateSensor();
-	virtual int getLevel(uint8_t type=0);
+  public:
+	  virtual void updateSensor();
+	  virtual int getLevel(uint8_t type=0);
 };
 
 #endif

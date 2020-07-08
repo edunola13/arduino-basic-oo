@@ -14,6 +14,7 @@ String parseProperty(String* json, String property, uint8_t maxLength){
     return "null";
   }
 }
+
 String parsePropertyTy2(String* json, String property, uint8_t maxLength){
   String val= property + "=";
   int i= json->indexOf(val);
@@ -33,7 +34,7 @@ String JsonInterface::propertyToJson(String name, String value, bool comillas, b
   if(tyJs == 1){
 	String val= "\"" + name + "\": ";
 	if(comillas){
-	  val+= "\"" + value + "\"";        
+	  val+= "\"" + value + "\"";
 	}else{
 	  val+= value;
 	}

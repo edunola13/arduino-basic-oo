@@ -1,9 +1,8 @@
 //#include "WProgram.h"
 #include <Arduino.h>
 #include <EEPROM.h>
-//#include <JsonHelper.h>
-#include "JsonHelper.h"
-#include "ElementAbstract.h"
+#include <JsonHelper.h>
+#include "ComponentAbstract.h"
 
 //UTIL
 bool isNotNull(String value){
@@ -16,11 +15,12 @@ void EEPROMWInt(int address, int value){
   //Decomposition from a int to 2 bytes by using bitshift.
   //One = Most significant -> Two = Least significant byte
   byte two= (value & 0xFF);
-  byte one= ((value >> 8) & 0xFF);  
+  byte one= ((value >> 8) & 0xFF);
   //Write the 2 bytes into the eeprom memory.
   EEPROM.write(address, two);
   EEPROM.write(address + 1, one);
 }
+
 //This function will return a 2 byte (16bit) int from the eeprom
 //at the specified address to address + 2.
 int EEPROMRInt(int address){
@@ -30,6 +30,7 @@ int EEPROMRInt(int address){
   //Return the recomposed int by using bitshift.
   return ((two << 0) & 0xFF) + ((one << 8) & 0xFFFF);
 }
+
 //This function will write a 4 byte (32bit) long to the eeprom at the specified address to address + 3.
 void EEPROMWLong(int address, long value){
   //Decomposition from a long to 4 bytes by using bitshift.
@@ -44,6 +45,7 @@ void EEPROMWLong(int address, long value){
   EEPROM.write(address + 2, two);
   EEPROM.write(address + 3, one);
 }
+
 long EEPROMRLong(long address){
   //Read the 4 bytes from the eeprom memory.
   long four = EEPROM.read(address);
@@ -53,6 +55,7 @@ long EEPROMRLong(long address){
   //Return the recomposed long by using bitshift.
   return ((four << 0) & 0xFF) + ((three << 8) & 0xFFFF) + ((two << 16) & 0xFFFFFF) + ((one << 24) & 0xFFFFFFFF);
 }
+
 /*template <class T> int EEPROM_writeAnything(int ee, const T& value){
     const byte* p = (const byte*)(const void*)&value;
     unsigned int i;
