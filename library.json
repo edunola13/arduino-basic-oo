@@ -1,7 +1,7 @@
 {
   "name": "EnolaArduinoBasicOO",
   "keywords": "arduino, OO",
-  "description": "Arduino Library para manejo de OO",
+  "description": "Arduino Library para simplificar uso de sensores, actuadores y controladores",
   "repository":
   {
     "type": "git",
