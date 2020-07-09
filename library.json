@@ -1,6 +1,6 @@
 {
   "name": "EnolaArduinoBasicOO",
-  "keywords": "arduino, OO",
+  "keywords": "arduino, oo, sensors, actuators, controllers",
   "description": "Arduino Library para simplificar uso de sensores, actuadores y controladores",
   "repository":
   {
