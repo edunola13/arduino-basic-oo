@@ -15,6 +15,20 @@
       "maintainer": true
     }
   ],
+  "dependencies":
+  [
+      {
+          "name": "EnolaArduinoBasicOO",
+      },
+      {
+          "name": "DHT sensor library",
+          "author": "Adafruit"
+      },
+      {
+          "name": "Adafruit Unified Sensor",
+          "author": "Adafruit"
+      }
+  ],
   "version": "1.1.0",
   "frameworks": "arduino",
   "platforms": "*"
