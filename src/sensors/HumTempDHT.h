@@ -10,6 +10,7 @@ class HumTempDHT: public SensorInterface{
   protected:
     uint8_t pin;
     float temp, hum;
+    bool errorRead = false;
 
   public:
     /*DHT11 11, DHT22 22, DHT21 21, AM2301 21*/
@@ -21,12 +22,13 @@ class HumTempDHT: public SensorInterface{
     void begin(uint8_t pin, uint8_t type);
     void stop();
 
-	   uint8_t getCode();
+	  uint8_t getCode();
 
     uint8_t getPin();
     void setPin(uint8_t pin);
     float getHumedad();
     float getTemperatura();
+    bool getErrorRead();
 
     //SensorInterface
   	void updateSensor();

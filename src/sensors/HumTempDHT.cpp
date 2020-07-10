@@ -39,6 +39,9 @@ float HumTempDHT::getHumedad(){
 float HumTempDHT::getTemperatura(){
   return this->temp;
 }
+bool HumTempDHT::getErrorRead(){
+  return this->errorRead;
+}
 
 //Sensor Interface
 void HumTempDHT::updateSensor(){
@@ -49,10 +52,11 @@ void HumTempDHT::updateSensor(){
   float t = dht.readTemperature();
   // Check if any reads failed and exit early (to try again).
   if (isnan(h) || isnan(t)) {
-    Serial.println("Error Leyendo");
+    this->errorRead = true;
   }else{
-    this->hum= h;
-    this->temp= t;
+    this->errorRead = false;
+    this->hum = h;
+    this->temp = t;
   }
 }
 int HumTempDHT::getLevel(uint8_t type){
