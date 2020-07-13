@@ -47,4 +47,20 @@ class AnalogSensor: public SensorInterface{
     void saveSpecificPartialInEeprom(int &pos);
 };
 
+
+class RainSensor: public AnalogSensor {
+  public:
+    int getLevel(uint8_t type=0);
+};
+
+class LdrsSensor: public AnalogSensor {
+  public:
+    int getLevel(uint8_t type=0);
+};
+
+class MQSensor: public AnalogSensor {
+  public:
+    int getLevel(uint8_t type=0);
+};
+
 #endif

@@ -120,3 +120,23 @@ void AnalogSensor::saveSpecificPartialInEeprom(int &pos){
     EEPROM.update(pos++, this->type);
   #endif
 }
+
+
+//
+// RainSensor
+int RainSensor::getLevel(uint8_t type) {
+  return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% dry, 100%: wet
+}
+
+
+//
+// LdrsSensor
+int LdrsSensor::getLevel(uint8_t type) {
+  return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% dark, 100% light
+}
+
+//
+// MQSensor
+int MQSensor::getLevel(uint8_t type) {
+  return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% no gas, 100% gas
+}
