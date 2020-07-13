@@ -26,12 +26,11 @@ int BMPSensor::getAltitude(){
 }
 void BMPSensor::setAltitude(int altitude){
   this->altitude = altitude;
-  this->begin();
 }
-float BMPSensor::getPressurePa(){
+int32_t BMPSensor::getPressurePa(){
   return this->pressure;
 }
-float BMPSensor::getPressureHPa(){
+int32_t BMPSensor::getPressureHPa(){
   return this->pressure / 100;
 }
 float BMPSensor::getTemperatura(){

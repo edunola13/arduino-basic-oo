@@ -8,7 +8,8 @@
 class BMPSensor: public SensorInterface{
   protected:
     int altitude;
-    float temp, pressure;
+    float temp;
+    int32_t pressure;
 
   public:
     /*DBMP180 = 0, */
@@ -23,8 +24,8 @@ class BMPSensor: public SensorInterface{
 
     int getAltitude();
     void setAltitude(int altitude);
-    float getPressurePa();
-    float getPressureHPa();
+    int32_t getPressurePa();
+    int32_t getPressureHPa();
     float getTemperatura();
 
     //SensorInterface
