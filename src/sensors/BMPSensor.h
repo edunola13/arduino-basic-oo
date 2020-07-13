@@ -1,5 +1,5 @@
-#ifndef HumTempDHT_h
-#define HumTempDHT_h
+#ifndef BMPSensor_h
+#define BMPSensor_h
 //#include "WConstants.h"
 #include <Arduino.h>
 #include <ComponentAbstract.h>

@@ -6,6 +6,7 @@
 #include <sensors/DistanceHCSR04.h>
 #include <sensors/HumTempDHT.h>
 #include <sensors/TempBase.h>
+#include <sensors/BMPSensor.h>
 
 #include <actuators/DigitalControl.h>
 #include <actuators/Relay.h>
@@ -15,6 +16,7 @@ DigitalSensor dig(2);
 DistanceHCSR04 dis(3, 4);
 HumTempDHT sen(5, 11);
 TempBase tmp(2, 1);
+BMPSensor bmp(25, 0);
 
 DigitalControl digC(3,1);
 Relay rel(3);
