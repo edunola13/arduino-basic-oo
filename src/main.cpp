@@ -12,6 +12,9 @@
 #include <actuators/Relay.h>
 
 AnalogSensor sen1(0);
+RainSensor rain(0);
+LdrsSensor ldrs(0);
+MQSensor mq(0);
 DigitalSensor dig(2);
 DistanceHCSR04 dis(3, 4);
 HumTempDHT sen(5, 11);

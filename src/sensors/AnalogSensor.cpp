@@ -124,6 +124,10 @@ void AnalogSensor::saveSpecificPartialInEeprom(int &pos){
 
 //
 // RainSensor
+RainSensor::RainSensor():AnalogSensor() {}
+RainSensor::RainSensor(uint8_t pinA):AnalogSensor(pinA) {}
+RainSensor::RainSensor(uint8_t pinA, uint8_t pinD, uint8_t type):AnalogSensor(pinA, pinD, type) {}
+
 int RainSensor::getLevel(uint8_t type) {
   return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% dry, 100%: wet
 }
@@ -131,12 +135,25 @@ int RainSensor::getLevel(uint8_t type) {
 
 //
 // LdrsSensor
+LdrsSensor::LdrsSensor():AnalogSensor() {}
+LdrsSensor::LdrsSensor(uint8_t pinA):AnalogSensor(pinA) {}
+LdrsSensor::LdrsSensor(uint8_t pinA, uint8_t pinD, uint8_t type):AnalogSensor(pinA, pinD, type) {}
+
 int LdrsSensor::getLevel(uint8_t type) {
   return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% dark, 100% light
 }
 
 //
 // MQSensor
+MQSensor::MQSensor():AnalogSensor() {}
+MQSensor::MQSensor(uint8_t pinA):AnalogSensor(pinA) {}
+MQSensor::MQSensor(uint8_t pinA, uint8_t pinD, uint8_t type):AnalogSensor(pinA, pinD, type) {}
+
 int MQSensor::getLevel(uint8_t type) {
-  return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% no gas, 100% gas
+  // depends of type invert o no the value
+  if (type == 0) {
+    return map(this->in, 0, 1024, 0, 100);  // 0% no gas, 100% gas
+  } else {
+    return map(this->in, 0, 1024, 100, 0);  // Invert value: 0% no gas, 100% gas
+  }
 }

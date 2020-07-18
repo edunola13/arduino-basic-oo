@@ -55,18 +55,21 @@ uint8_t BMPSensor::positions(){
 	return 5;
 }
 void BMPSensor::readSpecificFromEeprom(int &pos){
-  this->altitude = EEPROM.read(pos++);
+  EEPROM.get(pos, this->altitude);
+  pos += sizeof(this->altitude);
   this->type = EEPROM.read(pos++);
   this->begin();
 }
 void BMPSensor::saveSpecificPartialInEeprom(int &pos){
   #if defined(ESP8266) || defined(ESP32)
     // ESP
-    EEPROM.put(pos++, this->altitude);
+    EEPROM.put(pos, this->altitude);
+    pos += sizeof(this->altitude);
     EEPROM.put(pos++, this->type);
   #else
     // ARDUINO
-    EEPROM.update(pos++, this->altitude);
+    EEPROM.update(pos, this->altitude);
+    pos += sizeof(this->altitude);
     EEPROM.update(pos++, this->type);
   #endif
 }

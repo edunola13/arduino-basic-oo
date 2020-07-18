@@ -50,16 +50,28 @@ class AnalogSensor: public SensorInterface{
 
 class RainSensor: public AnalogSensor {
   public:
+    RainSensor();
+    RainSensor(uint8_t pinA);
+	  RainSensor(uint8_t pinA, uint8_t pinD, uint8_t type=0);
+
     int getLevel(uint8_t type=0);
 };
 
 class LdrsSensor: public AnalogSensor {
   public:
+    LdrsSensor();
+    LdrsSensor(uint8_t pinA);
+	  LdrsSensor(uint8_t pinA, uint8_t pinD, uint8_t type=0);
+
     int getLevel(uint8_t type=0);
 };
 
 class MQSensor: public AnalogSensor {
   public:
+    MQSensor();
+    MQSensor(uint8_t pinA);
+	  MQSensor(uint8_t pinA, uint8_t pinD, uint8_t type=0);
+
     int getLevel(uint8_t type=0);
 };
 
