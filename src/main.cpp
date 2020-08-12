@@ -1,3 +1,5 @@
+#include <Arduino.h>
+
 // #include <ComponentAbstract.h>
 // #include <JsonHelper.h>
 //
