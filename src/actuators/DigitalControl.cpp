@@ -56,7 +56,7 @@ void DigitalControl::readSpecificFromEeprom(int &pos){
   this->type = EEPROM.read(pos++);
   this->begin();
   if(this->keepValue){
-    //Leo el valor que tenia y lo seteo
+    // Leo el valor que tenia y lo seteo
     this->state = EEPROM.read(pos++);
     this->set(this->state);
   }
@@ -66,12 +66,12 @@ void DigitalControl::saveSpecificPartialInEeprom(int &pos){
   #if defined(ESP8266) || defined(ESP32)
     EEPROM.put(pos++, this->pinD);
     EEPROM.put(pos++, this->type);
-    //guardo siempre aunque despues no lo tenga que usar
+    // Guardo siempre aunque despues no lo tenga que usar
     EEPROM.put(pos++, this->state);
   #else
     EEPROM.update(pos++, this->pinD);
     EEPROM.update(pos++, this->type);
-    //guardo siempre aunque despues no lo tenga que usar
+    // Guardo siempre aunque despues no lo tenga que usar
     EEPROM.update(pos++, this->state);
   #endif
 }
